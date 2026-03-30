@@ -1,0 +1,166 @@
+:root {
+    --bg-dark: #0a0e1c; /* Темный фон */
+    --header-green: #90d64d; /* Зеленый цвет заголовка */
+    --circle-purple: #c4abeb; /* Фиолетовый цвет кругов */
+    --text-white: #ffffff;
+    --text-gray: #a1a1a1;
+    --radius-large: 32px; /* iOS-стиль закругления для кнопок */
+    --radius-small: 18px; /* Для блока профиля */
+    /* Стеклянный эффект */
+    --glass-bg: rgba(255, 255, 255, 0.1); 
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-blur: blur(12px);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    overflow: hidden; /* Запрет прокрутки самого приложения */
+    box-sizing: border-box;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 40px 24px; /* Отступы как на макете */
+    color: var(--text-white);
+    position: relative;
+    z-index: 1;
+}
+
+/* Фоновые круги */
+.background-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.circle {
+    position: absolute;
+    background-color: var(--circle-purple);
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(20px); /* Мягкие края как на макете */
+}
+
+/* Расстановка кругов как на эталоне */
+.c1 { width: 320px; height: 320px; top: 8%; right: -60px; }
+.c2 { width: 280px; height: 280px; bottom: 15%; right: -40px; }
+.c3 { width: 200px; height: 200px; top: 40%; left: -70px; }
+.c4 { width: 250px; height: 250px; top: 18%; right: 10%; } /* Уникальный круг в центре-верх */
+
+.header-text {
+    color: var(--header-green);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+/* Блок профиля */
+.profile-card {
+    background: rgba(0, 0, 0, 0.6); /* Черный, как на макете, но с легкой прозрачностью */
+    border-radius: var(--radius-small);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid var(--glass-border);
+    margin-bottom: 40px;
+    /* Стеклянный эффект для профиля (легкий) */
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+}
+
+.profile-pic {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.profile-status {
+    color: var(--text-gray);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Группа кнопок */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex-grow: 1; /* Чтобы кнопки были по центру */
+    justify-content: center;
+}
+
+/* --- КНОПКИ-СТЕКЛО --- */
+.glass-button {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur); /* Ключевой эффект размытия */
+    -webkit-backdrop-filter: var(--glass-blur); /* Поддержка Safari */
+    border: 1px solid var(--glass-border);
+    color: var(--text-white);
+    font-weight: 700;
+    font-size: 1.4rem; /* Крупный шрифт */
+    padding: 22px; /* Увеличенные отступы для iOS-эффекта */
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    /* Ультра-закругленные углы iOS */
+    border-radius: var(--radius-large); 
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект нажатия (тап) */
+.glass-button:active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0.97);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Эффект ховера для ПК */
+.glass-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.download-ios {
+    /* Дополнительные стили для верхней кнопки, если нужны */
+}
+
+.contact {
+    /* Дополнительные стили для нижней кнопки, если нужны */
+}
+
+/* Футер */
+.footer-text {
+    font-weight: 700;
+    color: var(--text-white);
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: auto;
+    letter-spacing: 0.5px;
+}
